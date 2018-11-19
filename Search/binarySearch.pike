@@ -48,7 +48,7 @@ class BinarySearch{
 	   	return -1; 
 	} 
 
-	//Function to generate the array of integers to sort and search
+	//Function to generate an array of integers 
 	void generateArray()
 	{
 		write(log() + "Generating elements for array.\n");
