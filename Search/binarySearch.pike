@@ -10,15 +10,15 @@
 
 class BinarySearch{
 
-	int N, x;
+	int x;
+	string filename;
 	array(int) a = ({});
 
 	//Constructor
-	void create(string n, string a){
-		N = (int) n;
-		x = (int) a;
-		a += x;
-		generateArray();
+	void create(string input, string num, ){
+		filename = input;
+		x = (int) num;
+		readFile();
 	}
 
 	//Function that invokes the binarySearch function
@@ -49,10 +49,15 @@ class BinarySearch{
 	} 
 
 	//Function to generate an array of integers 
-	void generateArray()
+	void readFile()
 	{
-		write(log() + "Generating elements for array.\n");
-	    for(int i = 0; i < N; i++) a += ({i});
+		write(log() + "Reading elements of file %s.\n", filename);
+		string s = Stdio.read_file(filename);
+		array(string) aux = s / "\n";
+
+		for(int i = 0; i < sizeof(aux) - 1; i++){
+			a += ({(int) aux[i]});
+		}	
 	}
 
 	//Function to print the elements of the array
@@ -80,9 +85,11 @@ int main(int argc, array(string) argv)
 		bs = BinarySearch(argv[1], argv[2]);
 	}
 	else{
-		write("Usage: pike binarySearch.pike <n_numbers> <n_search>. Ex: pike binarySearch.pike 1000000 1\n");
+		write("Usage: pike binarySearch.pike <input_file> <n_search>. Ex: pike binarySearch.pike output.txt 1\n");
 		exit(0);
 	}
 
+	//bs.writeElements();
 	bs.binarySearching();
+
 }

@@ -101,7 +101,7 @@ int main(int argc, array(string) argv)
 		exit(0);
 	}
 
-	qs.writeElements();
+	//qs.writeElements();
 	qs.quickSorting();
-	qs.writeElements();
+	//qs.writeElements();
 }
