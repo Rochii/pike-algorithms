@@ -8,33 +8,31 @@
 *
 */
 
-class QuickSort{
-
-	int N, RANDOM_LIMIT;
+class QuickSort
+{
 	array(int) a = ({});
 
 	//Constructor
-	void create(string n, string random_limit){
-		N = (int) n;
-		RANDOM_LIMIT = (int) random_limit;
-		generateArray();
+	void create(array(int) arr)
+	{
+		a = arr;
 	}
 
 	//Function that invokes the main quickSort function
-	void quickSorting()
+	void quickSort()
 	{
 		write(log() + "Sorting array of elements.\n");
-		quickSort(0, sizeof(a) - 1);
+		quickSorting(0, sizeof(a) - 1);
 	}
 
 	//Main quickSort function that makes recursive calls
-	void quickSort(int left, int right) 
+	void quickSorting(int left, int right) 
 	{ 
 	    if (left < right) 
 	    { 
 	        int p = partition(left, right);
-	        quickSort(left, p - 1); 
-	        quickSort(p + 1, right); 
+	        quickSorting(left, p - 1); 
+	        quickSorting(p + 1, right); 
 	    } 
 	}
 
@@ -65,43 +63,9 @@ class QuickSort{
 	    a[j] = tmp; 
 	} 
 
-	//Function to generate an array of integers 
-	void generateArray()
-	{
-		write(log() + "Generating elements for array.\n");
-	    for(int i = 0; i < N; i++) a += ({random(RANDOM_LIMIT)});
-	}
-
-	//Function to print the elements of the array
-	void writeElements()
-	{
-		write(log() + "Printing array of numbers: ");
-		foreach(a, int num) write("%d ", num);
-		write("\n");
-	}
-
 	//Function that obtains the current string time format to make the log
 	string log()
 	{
 		return ctime(time()) - "\n" + " => ";
 	}
-} 
-
-//Main program 
-int main(int argc, array(string) argv)
-{
-	QuickSort qs;
-
-	if(argc == 3)
-	{
-		qs = QuickSort(argv[1], argv[2]);
-	}
-	else{
-		write("Usage: pike quickSort.pike <n_numbers> <random_limit>. Ex: pike quickSort.pike 1000 100\n");
-		exit(0);
-	}
-
-	//qs.writeElements();
-	qs.quickSorting();
-	//qs.writeElements();
 }
